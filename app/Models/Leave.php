@@ -23,6 +23,11 @@ class Leave extends Model
         'applied_by',
     ];
 
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date'   => 'date',
+    ];
+
     // Add these relationships
     public function employee(): BelongsTo
     {
