@@ -33,18 +33,17 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/contact', [HomeController::class, 'contactSubmit'])->name('contact.submit');
 
+
 // Authentication Routes (Keep these before auth middleware)
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login')->middleware('guest');
 
+
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register')->middleware('guest');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     // Dashboard
@@ -65,23 +64,22 @@ Route::middleware(['auth'])->group(function () {
     // Attendance Routes
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
     Route::post('/attendance/datatable', [AttendanceController::class, 'datatable'])->name('attendance.datatable');
-
-    Route::post('/attendance/mark', [AttendanceController::class, 'markAttendance'])->name('attendance.mark');
     Route::get('/attendance/create', [AttendanceController::class, 'create'])->name('attendance.create');
-    Route::post('/attendance', [AttendanceController::class, 'store'])->name('attendance.store');
-    Route::get('/attendance/{employee}/report', [AttendanceController::class, 'employeeReport'])->name('attendance.report');
     
     // Leave Routes
-    Route::resource('leaves', LeaveController::class);
-    Route::post('leaves/{leave}/approve', [LeaveController::class, 'approve'])->name('leaves.approve');
-    Route::post('leaves/{leave}/reject', [LeaveController::class, 'reject'])->name('leaves.reject');
-    
+    Route::resource('leaves', LeaveController::class)->except(['store']);
+    Route::post('leaves/datatable', [LeaveController::class, 'datatable'])->name('leaves.datatable');
+    Route::post('leave-types', [LeaveController::class, 'leaveTypes'])->name('leaves.types');
+    Route::post('leaves-store', [LeaveController::class, 'store'])->name('leaves.store');
+    Route::post('leaves-approve-reject', [LeaveController::class, 'approveReject'])->name('leaves.approveReject');
+
     // Payroll Routes
     Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll.index');
     Route::get('/payroll/generate', [PayrollController::class, 'create'])->name('payroll.create');
     Route::post('/payroll', [PayrollController::class, 'store'])->name('payroll.store');
     Route::get('/payroll/{payroll}/payslip', [PayrollController::class, 'payslip'])->name('payroll.payslip');
 
+    // Profile Routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
