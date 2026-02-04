@@ -73,11 +73,34 @@ Route::middleware(['auth'])->group(function () {
     Route::post('leaves-store', [LeaveController::class, 'store'])->name('leaves.store');
     Route::post('leaves-approve-reject', [LeaveController::class, 'approveReject'])->name('leaves.approveReject');
 
-    // Payroll Routes
+    //** Payroll Routes start **//
     Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll.index');
-    Route::get('/payroll/generate', [PayrollController::class, 'create'])->name('payroll.create');
-    Route::post('/payroll', [PayrollController::class, 'store'])->name('payroll.store');
-    Route::get('/payroll/{payroll}/payslip', [PayrollController::class, 'payslip'])->name('payroll.payslip');
+    Route::get('/payroll/create', [PayrollController::class, 'create'])->name('payroll.create');
+    Route::post('/payroll/store', [PayrollController::class, 'store'])->name('payroll.store');
+
+    // Datatable + stats
+    Route::get('/payroll/data', [PayrollController::class, 'getPayrollData'])->name('payroll.data');
+    Route::get('/payroll/stats', [PayrollController::class, 'getStats'])->name('payroll.stats');
+
+    // Filters
+    Route::get('/payroll/employees', [PayrollController::class, 'getEmployees'])->name('payroll.employees');
+
+    // Single payroll
+    Route::get('/payroll/{id}/details', [PayrollController::class, 'getPayrollDetails'])->name('payroll.details');
+    Route::put('/payroll/{id}/status', [PayrollController::class, 'updateStatus'])->name('payroll.updateStatus');
+    Route::delete('/payroll/{id}', [PayrollController::class, 'destroy'])->name('payroll.destroy');
+
+    // Bulk actions
+    Route::post('/payroll/bulk/status', [PayrollController::class, 'bulkUpdateStatus'])->name('payroll.bulkStatus');
+    Route::post('/payroll/bulk/delete', [PayrollController::class, 'bulkDelete'])->name('payroll.bulkDelete');
+
+    // Payslip
+    Route::get('/payroll/{id}/payslip', [PayrollController::class, 'downloadPayslip'])->name('payroll.payslip');
+
+    // Edit / update
+    Route::get('/payroll/{id}/edit', [PayrollController::class, 'edit'])->name('payroll.edit');
+    Route::put('/payroll/{id}', [PayrollController::class, 'update'])->name('payroll.update');
+    //** Payroll Routes end **//
 
     // Profile Routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
