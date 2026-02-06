@@ -57,7 +57,7 @@
                         <i class="fas fa-money-check-alt mr-3 text-gray-500 {{ request()->routeIs('payroll.*') ? 'text-blue-600' : '' }}"></i>
                         <span class="font-medium">Payroll</span>
                     </a>
-                    <a href="#" 
+                    <a href="{{ route('report.index') }}" 
                        class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors duration-200 border-l-4 border-transparent">
                         <i class="fas fa-chart-line mr-3 text-gray-500"></i>
                         <span class="font-medium">Reports</span>

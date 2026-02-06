@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\PayrollController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -101,6 +102,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/payroll/{id}/edit', [PayrollController::class, 'edit'])->name('payroll.edit');
     Route::put('/payroll/{id}', [PayrollController::class, 'update'])->name('payroll.update');
     //** Payroll Routes end **//
+
+    // Reports Routes
+    Route::get('/report', [ReportController::class, 'index'])->name('report.index');
+    Route::get('/report/data', [ReportController::class, 'getReportData'])->name('report.data');
+    Route::get('/report/export/pdf', [ReportController::class, 'exportPDF'])->name('report.export.pdf');
+    Route::get('/report/export/csv', [ReportController::class, 'exportCSV'])->name('report.export.csv');
 
     // Profile Routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
