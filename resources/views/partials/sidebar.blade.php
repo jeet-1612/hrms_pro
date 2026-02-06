@@ -74,7 +74,7 @@
                         <i class="fas fa-building mr-3 text-gray-500 {{ request()->routeIs('departments.*') ? 'text-blue-600' : '' }}"></i>
                         <span class="font-medium">Departments</span>
                     </a>
-                    <a href="#" 
+                    <a href="{{ route('designation.index') }}" 
                        class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors duration-200 border-l-4 border-transparent">
                         <i class="fas fa-briefcase mr-3 text-gray-500"></i>
                         <span class="font-medium">Designations</span>

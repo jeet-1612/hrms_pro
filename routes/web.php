@@ -9,6 +9,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\DesignationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,9 +60,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('employees/{employee}/profile', [EmployeeController::class, 'profile'])->name('employees.profile');
     Route::post('employees/{employee}/status', [EmployeeController::class, 'updateStatus'])->name('employees.status');
     
-    // Department Routes
-    Route::resource('departments', DepartmentController::class);
-    
     // Attendance Routes
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
     Route::post('/attendance/datatable', [AttendanceController::class, 'datatable'])->name('attendance.datatable');
@@ -73,6 +71,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('leave-types', [LeaveController::class, 'leaveTypes'])->name('leaves.types');
     Route::post('leaves-store', [LeaveController::class, 'store'])->name('leaves.store');
     Route::post('leaves-approve-reject', [LeaveController::class, 'approveReject'])->name('leaves.approveReject');
+
 
     //** Payroll Routes start **//
     Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll.index');
@@ -103,11 +102,21 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/payroll/{id}', [PayrollController::class, 'update'])->name('payroll.update');
     //** Payroll Routes end **//
 
+
     // Reports Routes
     Route::get('/report', [ReportController::class, 'index'])->name('report.index');
     Route::get('/report/data', [ReportController::class, 'getReportData'])->name('report.data');
     Route::get('/report/export/pdf', [ReportController::class, 'exportPDF'])->name('report.export.pdf');
     Route::get('/report/export/csv', [ReportController::class, 'exportCSV'])->name('report.export.csv');
+
+    // Department Routes
+    Route::get('/departments', [DepartmentController::class, 'index'])->name('departments.index');
+    Route::get('/departments/datatable', [DepartmentController::class, 'datatable'])->name('departments.datatable');
+
+    // Designation Routes
+    Route::get('/designation', [DesignationController::class, 'index'])->name('designation.index');
+    Route::get('/designation/datatable', [DesignationController::class, 'datatable'])->name('designation.datatable');
+
 
     // Profile Routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

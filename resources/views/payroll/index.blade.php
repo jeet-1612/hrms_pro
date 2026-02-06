@@ -5,10 +5,11 @@
 @section('page-title', 'Payroll Management') 
 
 @section('content')
-<div class="bg-white rounded-xl shadow-lg p-4 md:p-6">
+<div class="bg-white rounded-xl shadow p-6">
     <!-- Header with Actions -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
         <div>
+            <h2 class="text-xl font-semibold text-gray-800">Payroll</h2>
             <p class="text-gray-600">Manage employee payrolls, generate payslips, and track payments</p>
         </div>
         

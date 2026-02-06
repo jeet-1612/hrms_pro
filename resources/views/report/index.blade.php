@@ -5,10 +5,11 @@
 @section('page-title', 'Report Management') 
 
 @section('content')
-<div class="bg-white rounded-xl shadow-lg p-4 md:p-6">
+<div class="bg-white rounded-xl shadow p-6">
     <!-- Header Section -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
         <div>
+            <h2 class="text-xl font-semibold text-gray-800">All Reports</h2>
             <p class="text-gray-600">Generate and view various HR and payroll reports</p>
         </div>
         <div class="mt-4 md:mt-0">

@@ -5,15 +5,18 @@
 
 @section('content')
 <div class="bg-white rounded-xl shadow p-6">
-    <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-semibold">All Employees</h2>
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+        <div>
+            <h2 class="text-xl font-semibold text-gray-800">All Employees</h2>
+            <p class="text-gray-600 mt-1">Maintain complete employee details and organizational structure.</p>
+        </div>
         <button
             id="openEmpModal"
             class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
             <i class="fas fa-plus mr-2"></i>Add New Employee
         </button>
     </div>
-    
+
     <!-- Search and Filter -->
     <button id="toggleFilter"
         class="mb-4 bg-gray-100 px-4 py-2 rounded-lg border hover:bg-gray-200">
