@@ -86,12 +86,12 @@
             <div class="mt-6">
                 <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">SYSTEM</p>
                 <div class="space-y-1">
-                    <a href="#" 
+                    <a href="{{ route('settings.index') }}" 
                        class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors duration-200 border-l-4 border-transparent">
                         <i class="fas fa-cog mr-3 text-gray-500"></i>
                         <span class="font-medium">Settings</span>
                     </a>
-                    <a href="#" 
+                    <a href="{{ route('roles.index') }}" 
                        class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors duration-200 border-l-4 border-transparent">
                         <i class="fas fa-user-shield mr-3 text-gray-500"></i>
                         <span class="font-medium">Roles & Permissions</span>

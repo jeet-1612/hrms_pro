@@ -10,6 +10,8 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\DesignationController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -116,6 +118,12 @@ Route::middleware(['auth'])->group(function () {
     // Designation Routes
     Route::get('/designation', [DesignationController::class, 'index'])->name('designation.index');
     Route::get('/designation/datatable', [DesignationController::class, 'datatable'])->name('designation.datatable');
+    
+    // Settings Routes
+    Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+
+    // Roles & Permissions Routes
+    Route::get('/roles', [PermissionController::class, 'index'])->name('roles.index');
 
 
     // Profile Routes
