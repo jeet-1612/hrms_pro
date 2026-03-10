@@ -19,26 +19,38 @@
     </div>
 
     <!-- Filters -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-5">
-        <input type="date" id="filter_date"
-               class="border rounded px-3 py-2 text-sm">
+    <div class="flex flex-wrap items-end gap-4 mb-5">
 
-        <select id="filter_status"
-                class="border rounded px-3 py-2 text-sm">
-            <option value="">All Status</option>
-            <option value="present">Present</option>
-            <option value="absent">Absent</option>
-            <option value="late">Late</option>
-            <option value="half_day">Half Day</option>
-            <option value="on_leave">On Leave</option>
-            <option value="holiday">Holiday</option>
-            <option value="weekend">Weekend</option>
-        </select>
+        <div class="flex flex-col">
+            <label class="text-sm mb-1">Date</label>
+            <input type="date" id="filter_date"
+                class="border rounded px-3 py-2 text-sm w-64">
+        </div>
+
+        <div class="flex flex-col">
+            <label class="text-sm mb-1">Status</label>
+            <select id="filter_status"
+                    class="border rounded px-3 py-2 text-sm w-64">
+                <option value="">All Status</option>
+                <option value="present">Present</option>
+                <option value="absent">Absent</option>
+                <option value="late">Late</option>
+                <option value="half_day">Half Day</option>
+                <option value="on_leave">On Leave</option>
+                <option value="holiday">Holiday</option>
+                <option value="weekend">Weekend</option>
+            </select>
+        </div>
 
         <button id="filterBtn"
-                class="bg-gray-800 text-white rounded px-4 py-2 text-sm">
+                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap">
             Apply Filter
         </button>
+        <button id="resetBtn"
+                class="bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap">
+            Reset
+        </button>
+
     </div>
 
     <!-- Table -->
@@ -63,9 +75,10 @@
 @push('scripts')
 
 <script>
+let table;
 $(function () {
 
-    let table = $('#attendanceTable').DataTable({
+    table = $('#attendanceTable').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
@@ -92,6 +105,12 @@ $(function () {
         table.ajax.reload();
     });
 
+});
+
+$("#resetBtn").click(function () {
+    $("#filter_date").val('');
+    $("#filter_status").val('');
+    table.ajax.reload();
 });
 </script>
 @endpush
