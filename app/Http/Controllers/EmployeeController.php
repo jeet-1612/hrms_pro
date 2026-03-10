@@ -139,7 +139,7 @@ class EmployeeController extends Controller
                     <button type="button"
                             class="text-blue-600 mr-2 editBtn"
                             data-id="{{ $employee->id }}">
-                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-pencil-alt"></i>
                     </button>
                     <button type="button"
                         class="text-red-600 mr-2 deleteBtn"
