@@ -82,32 +82,33 @@
     </div>
 
     <!-- Employee Modal -->
-    <div id="empModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50 p-2">
-        <div class="bg-white w-full max-w-md rounded-lg shadow-lg overflow-y-auto max-h-[90vh]">
+    <div id="empModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50 p-4">
+        <div class="bg-white w-full max-w-4xl rounded-xl shadow-2xl overflow-hidden">
             <!-- Header -->
-            <div class="flex justify-between items-center px-4 py-3 border-b bg-gradient-to-r from-blue-50 to-white">
-                <h3 id="modalTitle" class="text-lg font-semibold text-gray-800">Add Employee</h3>
-                <button id="closeModal" class="text-gray-400 hover:text-gray-700 w-8 h-8 rounded-full flex items-center justify-center transition-colors">
-                    <i class="fas fa-times text-lg"></i>
+            <div class="flex justify-between items-center px-5 py-3 bg-gradient-to-r from-blue-600 to-blue-700">
+                <h3 id="modalTitle" class="text-base font-medium text-white">Add New Employee</h3>
+                <button id="closeModal" class="text-white/80 hover:text-white w-7 h-7 rounded-full hover:bg-white/10 flex items-center justify-center transition-all">
+                    <i class="fas fa-times"></i>
                 </button>
             </div>
 
             <!-- Body -->
-            <form id="employeeForm" class="px-4 py-4 space-y-3">
+            <form id="employeeForm" class="p-5 bg-gray-50">
                 @csrf
                 <input type="hidden" id="employee_id">
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                
+                <!-- Form Grid - 3 columns for all screens -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <!-- Employee Code -->
                     <div>
-                        <label class="block text-xs font-medium text-gray-700 mb-1">Employee Code <span class="text-red-500">*</span></label>
-                        <input type="text" id="employee_code" class="w-full border border-gray-300 rounded px-3 py-1.5 text-sm">
+                        <label class="block text-xs font-medium text-gray-600 mb-1">Emp Code <span class="text-red-500">*</span></label>
+                        <input type="text" id="employee_code" placeholder="EMP001" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                     </div>
 
                     <!-- Gender -->
                     <div>
-                        <label class="block text-xs font-medium text-gray-700 mb-1">Gender <span class="text-red-500">*</span></label>
-                        <select id="gender" class="w-full border border-gray-300 rounded px-3 py-1.5 text-sm">
+                        <label class="block text-xs font-medium text-gray-600 mb-1">Gender <span class="text-red-500">*</span></label>
+                        <select id="gender" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                             <option value="">Select</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -115,34 +116,56 @@
                         </select>
                     </div>
 
+                    <!-- Employment Type -->
+                    <div>
+                        <label class="block text-xs font-medium text-gray-600 mb-1">Emp Type</label>
+                        <select id="employment_type" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                            <option value="">Select</option>
+                            <option value="probation">Probation</option>
+                            <option value="permanent">Permanent</option>
+                            <option value="contract">Contract</option>
+                            <option value="intern">Intern</option>
+                        </select>
+                    </div>
+
                     <!-- First Name -->
                     <div>
-                        <label class="block text-xs font-medium text-gray-700 mb-1">First Name <span class="text-red-500">*</span></label>
-                        <input type="text" id="first_name" class="w-full border border-gray-300 rounded px-3 py-1.5 text-sm">
+                        <label class="block text-xs font-medium text-gray-600 mb-1">First Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="first_name" placeholder="John" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                     </div>
 
                     <!-- Last Name -->
                     <div>
-                        <label class="block text-xs font-medium text-gray-700 mb-1">Last Name <span class="text-red-500">*</span></label>
-                        <input type="text" id="last_name" class="w-full border border-gray-300 rounded px-3 py-1.5 text-sm">
+                        <label class="block text-xs font-medium text-gray-600 mb-1">Last Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="last_name" placeholder="Doe" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                    </div>
+
+                    <!-- Status -->
+                    <div>
+                        <label class="block text-xs font-medium text-gray-600 mb-1">Status</label>
+                        <select id="employment_status" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                            <option value="">Select</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
                     </div>
 
                     <!-- DOB -->
                     <div>
-                        <label class="block text-xs font-medium text-gray-700 mb-1">Date of Birth <span class="text-red-500">*</span></label>
-                        <input type="date" id="date_of_birth" class="w-full border border-gray-300 rounded px-3 py-1.5 text-sm">
+                        <label class="block text-xs font-medium text-gray-600 mb-1">Date of Birth <span class="text-red-500">*</span></label>
+                        <input type="date" id="date_of_birth" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                     </div>
 
                     <!-- Joining Date -->
                     <div>
-                        <label class="block text-xs font-medium text-gray-700 mb-1">Joining Date <span class="text-red-500">*</span></label>
-                        <input type="date" id="joining_date" class="w-full border border-gray-300 rounded px-3 py-1.5 text-sm">
+                        <label class="block text-xs font-medium text-gray-600 mb-1">Joining Date <span class="text-red-500">*</span></label>
+                        <input type="date" id="joining_date" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                     </div>
 
                     <!-- Department -->
                     <div>
-                        <label class="block text-xs font-medium text-gray-700 mb-1">Department <span class="text-red-500">*</span></label>
-                        <select id="department_id" class="w-full border border-gray-300 rounded px-3 py-1.5 text-sm">
+                        <label class="block text-xs font-medium text-gray-600 mb-1">Department <span class="text-red-500">*</span></label>
+                        <select id="department_id" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                             <option value="">Select</option>
                             @foreach($departments as $dept)
                                 <option value="{{ $dept->id }}">{{ $dept->name }}</option>
@@ -152,8 +175,8 @@
 
                     <!-- Designation -->
                     <div>
-                        <label class="block text-xs font-medium text-gray-700 mb-1">Designation <span class="text-red-500">*</span></label>
-                        <select id="designation_id" class="w-full border border-gray-300 rounded px-3 py-1.5 text-sm">
+                        <label class="block text-xs font-medium text-gray-600 mb-1">Designation <span class="text-red-500">*</span></label>
+                        <select id="designation_id" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                             <option value="">Select</option>
                             @foreach($designations as $desig)
                                 <option value="{{ $desig->id }}">{{ $desig->title }}</option>
@@ -161,42 +184,20 @@
                         </select>
                     </div>
 
-                    <!-- Employment Type -->
-                    <div>
-                        <label class="block text-xs font-medium text-gray-700 mb-1">Employment Type</label>
-                        <select id="employment_type" class="w-full border border-gray-300 rounded px-3 py-1.5 text-sm">
-                            <option value="">Select</option>
-                            <option value="probation">Probation</option>
-                            <option value="permanent">Permanent</option>
-                            <option value="contract">Contract</option>
-                            <option value="intern">Intern</option>
-                        </select>
-                    </div>
-
-                    <!-- Status -->
-                    <div>
-                        <label class="block text-xs font-medium text-gray-700 mb-1">Status</label>
-                        <select id="employment_status" class="w-full border border-gray-300 rounded px-3 py-1.5 text-sm">
-                            <option value="">Select</option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </select>
-                    </div>
-
-                    <!-- Address -->
-                    <div class="md:col-span-2">
-                        <label class="block text-xs font-medium text-gray-700 mb-1">Current Address <span class="text-red-500">*</span></label>
-                        <textarea id="current_address" class="w-full border border-gray-300 rounded px-3 py-1.5 text-sm" rows="2"></textarea>
+                    <!-- Address - Full width -->
+                    <div class="md:col-span-3">
+                        <label class="block text-xs font-medium text-gray-600 mb-1">Current Address <span class="text-red-500">*</span></label>
+                        <textarea id="current_address" placeholder="Enter your complete current address..." class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" rows="2"></textarea>
                     </div>
                 </div>
 
                 <!-- Footer -->
-                <div class="flex justify-end gap-2 px-4 py-3 border-t">
-                    <button type="button" id="cancelModal" class="px-4 py-1.5 bg-gray-200 text-gray-700 rounded text-sm hover:bg-gray-300">
+                <div class="flex justify-end gap-3 mt-5 pt-4 border-t border-gray-200">
+                    <button type="button" id="cancelModal" class="px-5 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
                         Cancel
                     </button>
-                    <button type="submit" class="px-4 py-1.5 bg-blue-600 text-white rounded text-sm hover:bg-blue-700">
-                        Save
+                    <button type="submit" class="px-5 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm">
+                        Save Employee
                     </button>
                 </div>
             </form>
@@ -204,77 +205,89 @@
     </div>
 
     <!-- View Employee Modal -->
-    <div id="viewEmpModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50 p-2">
-        <div class="bg-white w-full max-w-md rounded-lg shadow-lg overflow-y-auto max-h-[90vh]">
+    <div id="viewEmpModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50 p-4">
+        <div class="bg-white w-full max-w-4xl rounded-xl shadow-2xl overflow-hidden">
             <!-- Header -->
-            <div class="flex justify-between items-center px-4 py-3 bg-gradient-to-r from-blue-50 to-white border-b border-gray-200">
+            <div class="flex justify-between items-center px-5 py-3 bg-gradient-to-r from-blue-600 to-blue-700">
                 <div>
-                    <h3 class="text-xl font-bold text-gray-800">Employee Details</h3>
-                    <p class="text-sm text-gray-500 mt-1">Complete information about this employee</p>
+                    <h3 class="text-base font-medium text-white">Employee Details</h3>
+                    <p class="text-xs text-blue-100 mt-0.5">Complete information about this employee</p>
                 </div>
-                <button id="closeViewModal" class="text-gray-400 hover:text-gray-700 w-8 h-8 rounded-full flex items-center justify-center transition-colors">
-                    <i class="fas fa-times text-lg"></i>
+                <button id="closeViewModal" class="text-white/80 hover:text-white w-7 h-7 rounded-full hover:bg-white/10 flex items-center justify-center transition-all">
+                    <i class="fas fa-times"></i>
                 </button>
             </div>
 
             <!-- Body -->
-            <div class="px-4 py-4 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <!-- Left Column -->
-                    <div class="space-y-2">
-                        <div class="p-2 rounded-lg bg-gray-50 border border-gray-100">
-                            <div class="text-xs font-medium text-gray-500 uppercase mb-1">Employee Code</div>
-                            <div id="view_employee_code" class="text-sm font-semibold text-gray-800">--</div>
-                        </div>
-                        <div class="p-2 rounded-lg bg-gray-50 border border-gray-100">
-                            <div class="text-xs font-medium text-gray-500 uppercase mb-1">Full Name</div>
-                            <div id="view_full_name" class="text-sm font-semibold text-gray-800">--</div>
-                        </div>
-                        <div class="p-2 rounded-lg bg-gray-50 border border-gray-100">
-                            <div class="text-xs font-medium text-gray-500 uppercase mb-1">Gender</div>
-                            <div id="view_gender" class="text-sm font-semibold text-gray-800">--</div>
-                        </div>
-                        <div class="p-2 rounded-lg bg-gray-50 border border-gray-100">
-                            <div class="text-xs font-medium text-gray-500 uppercase mb-1">Department</div>
-                            <div id="view_department" class="text-sm font-semibold text-gray-800">--</div>
-                        </div>
-                        <div class="p-2 rounded-lg bg-gray-50 border border-gray-100">
-                            <div class="text-xs font-medium text-gray-500 uppercase mb-1">Designation</div>
-                            <div id="view_designation" class="text-sm font-semibold text-gray-800">--</div>
+            <div class="p-5 bg-gray-50">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Employee Code -->
+                    <div class="bg-white rounded-lg border border-gray-200 p-3 shadow-sm">
+                        <div class="text-xs font-medium text-gray-500 mb-1">Employee Code</div>
+                        <div id="view_employee_code" class="text-base font-semibold text-gray-800">--</div>
+                    </div>
+
+                    <!-- Full Name -->
+                    <div class="bg-white rounded-lg border border-gray-200 p-3 shadow-sm">
+                        <div class="text-xs font-medium text-gray-500 mb-1">Full Name</div>
+                        <div id="view_full_name" class="text-base font-semibold text-gray-800">--</div>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="bg-white rounded-lg border border-gray-200 p-3 shadow-sm">
+                        <div class="text-xs font-medium text-gray-500 mb-1">Gender</div>
+                        <div id="view_gender" class="text-base font-semibold text-gray-800 capitalize">--</div>
+                    </div>
+
+                    <!-- Department -->
+                    <div class="bg-white rounded-lg border border-gray-200 p-3 shadow-sm">
+                        <div class="text-xs font-medium text-gray-500 mb-1">Department</div>
+                        <div id="view_department" class="text-base font-semibold text-gray-800">--</div>
+                    </div>
+
+                    <!-- Designation -->
+                    <div class="bg-white rounded-lg border border-gray-200 p-3 shadow-sm">
+                        <div class="text-xs font-medium text-gray-500 mb-1">Designation</div>
+                        <div id="view_designation" class="text-base font-semibold text-gray-800">--</div>
+                    </div>
+
+                    <!-- Employment Type -->
+                    <div class="bg-white rounded-lg border border-gray-200 p-3 shadow-sm">
+                        <div class="text-xs font-medium text-gray-500 mb-1">Employment Type</div>
+                        <div id="view_employment_type" class="text-base font-semibold text-gray-800 capitalize">--</div>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="bg-white rounded-lg border border-gray-200 p-3 shadow-sm">
+                        <div class="text-xs font-medium text-gray-500 mb-1">Status</div>
+                        <div id="view_status" class="text-base font-semibold">
+                            <span class="px-2 py-0.5 bg-green-100 text-green-800 rounded-full text-xs">--</span>
                         </div>
                     </div>
 
-                    <!-- Right Column -->
-                    <div class="space-y-2">
-                        <div class="p-2 rounded-lg bg-gray-50 border border-gray-100">
-                            <div class="text-xs font-medium text-gray-500 uppercase mb-1">Employment Type</div>
-                            <div id="view_employment_type" class="text-sm font-semibold text-gray-800">--</div>
-                        </div>
-                        <div class="p-2 rounded-lg bg-gray-50 border border-gray-100">
-                            <div class="text-xs font-medium text-gray-500 uppercase mb-1">Status</div>
-                            <div id="view_status" class="text-sm font-semibold text-gray-800">--</div>
-                        </div>
-                        <div class="p-2 rounded-lg bg-gray-50 border border-gray-100">
-                            <div class="text-xs font-medium text-gray-500 uppercase mb-1">Date of Birth</div>
-                            <div id="view_date_of_birth" class="text-sm font-semibold text-gray-800">--</div>
-                        </div>
-                        <div class="p-2 rounded-lg bg-gray-50 border border-gray-100">
-                            <div class="text-xs font-medium text-gray-500 uppercase mb-1">Joining Date</div>
-                            <div id="view_joining_date" class="text-sm font-semibold text-gray-800">--</div>
-                        </div>
+                    <!-- Date of Birth -->
+                    <div class="bg-white rounded-lg border border-gray-200 p-3 shadow-sm">
+                        <div class="text-xs font-medium text-gray-500 mb-1">Date of Birth</div>
+                        <div id="view_date_of_birth" class="text-base font-semibold text-gray-800">--</div>
                     </div>
-                </div>
 
-                <!-- Address -->
-                <div class="p-2 rounded-lg bg-gray-50 border border-gray-100">
-                    <div class="text-xs font-medium text-gray-500 uppercase mb-1">Current Address</div>
-                    <div id="view_current_address" class="text-sm font-semibold text-gray-800">--</div>
+                    <!-- Joining Date -->
+                    <div class="bg-white rounded-lg border border-gray-200 p-3 shadow-sm">
+                        <div class="text-xs font-medium text-gray-500 mb-1">Joining Date</div>
+                        <div id="view_joining_date" class="text-base font-semibold text-gray-800">--</div>
+                    </div>
+
+                    <!-- Address - Full width -->
+                    <div class="md:col-span-3 bg-white rounded-lg border border-gray-200 p-3 shadow-sm">
+                        <div class="text-xs font-medium text-gray-500 mb-1">Current Address</div>
+                        <div id="view_current_address" class="text-base font-semibold text-gray-800">--</div>
+                    </div>
                 </div>
             </div>
 
             <!-- Footer -->
-            <div class="flex justify-end px-4 py-3 border-t border-gray-200 bg-gray-50">
-                <button type="button" id="closeViewModalBtn" class="px-4 py-2 bg-gray-800 text-white font-medium rounded hover:bg-gray-900 transition-colors">
+            <div class="flex justify-end px-5 py-3 border-t border-gray-200 bg-white">
+                <button type="button" id="closeViewModalBtn" class="px-5 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm">
                     Close
                 </button>
             </div>
@@ -366,7 +379,7 @@ $(document).ready(function () {
             type: 'POST',
             data: {
                 _token: "{{ csrf_token() }}",
-                employee_id: $('#employee_id').val(), // <-- same name as backend
+                employee_id: $('#employee_id').val(),
                 employee_code: $('#employee_code').val(),
                 first_name: $('#first_name').val(),
                 last_name: $('#last_name').val(),
@@ -437,25 +450,48 @@ $(document).ready(function () {
         $('#viewEmpModal').addClass('hidden').removeClass('flex');
     });
 
-    // DELETE Employee
+    // DELETE Employee - Simple SweetAlert
     $(document).on('click', '.deleteBtn', function () {
         let rowData = employeeTable.row($(this).parents('tr')).data();
         let id = rowData.id;
+        let employeeName = rowData.first_name + ' ' + rowData.last_name;
 
-        if (!confirm('Delete employee?')) return;
-
-        $.ajax({
-            url: '/employees/' + id,
-            type: 'DELETE',
-            data: {
-                _token: "{{ csrf_token() }}"
-            },
-            success: function (res) {
-                alert(res.message);
-                $('#employeeTable').DataTable().ajax.reload();
-            },
-            error: function (xhr) {
-                alert('Delete failed');
+        Swal.fire({
+            title: 'Delete Employee?',
+            text: `Are you sure you want to delete ${employeeName || 'this employee'}?`,
+            icon: 'question',
+            width: 400,
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, Delete',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '/employees/' + id,
+                    type: 'DELETE',
+                    data: {
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function (res) {
+                        Swal.fire({
+                            title: 'Deleted!',
+                            text: res.message || 'Employee deleted successfully.',
+                            icon: 'success',
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+                        $('#employeeTable').DataTable().ajax.reload();
+                    },
+                    error: function (xhr) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: xhr.responseJSON?.message || 'Delete failed',
+                            icon: 'error'
+                        });
+                    }
+                });
             }
         });
     });
