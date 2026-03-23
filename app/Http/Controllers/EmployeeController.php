@@ -39,11 +39,19 @@ class EmployeeController extends Controller
 
         $limit = $request->input('length');
         $start = $request->input('start');
-        $orderColumnIndex = $request->input('order.0.column');
-        $order = $columns[$orderColumnIndex] ?? 'created_at';
-        $dir   = $request->input('order.0.dir') ?? 'desc';
-
+        
         $query = Employee::with(['department', 'designation']);
+
+        $orderColumnIndex = $request->input('order.0.column');
+        $dir = $request->input('order.0.dir');
+
+        if ($orderColumnIndex == 0 && $dir == 'asc') {
+            $order = 'id';
+            $dir   = 'desc';
+        } else {
+            $order = $columns[$orderColumnIndex] ?? 'id';
+            $dir   = $dir ?? 'asc';
+        }
 
         // DATATABLE DEFAULT SEARCH
         if ($request->filled('search.value')) {
@@ -88,7 +96,7 @@ class EmployeeController extends Controller
             ->limit($limit)
             ->orderBy($order, $dir)
             ->get();
-
+        
         // RESPONSE DATA
         $data = [];
 

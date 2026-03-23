@@ -22,15 +22,15 @@
     <div class="flex flex-wrap items-end gap-4 mb-5">
 
         <div class="flex flex-col">
-            <label class="text-sm mb-1">Date</label>
+            <label class="text-sm font-medium mb-1">Date</label>
             <input type="date" id="filter_date"
-                class="border rounded px-3 py-2 text-sm w-64">
+                class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-64 focus:ring-2 focus:ring-blue-500 focus:outline-none">
         </div>
 
         <div class="flex flex-col">
-            <label class="text-sm mb-1">Status</label>
+            <label class="text-sm font-medium mb-1">Status</label>
             <select id="filter_status"
-                    class="border rounded px-3 py-2 text-sm w-64">
+                class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-64 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 <option value="">All Status</option>
                 <option value="present">Present</option>
                 <option value="absent">Absent</option>
@@ -43,11 +43,12 @@
         </div>
 
         <button id="filterBtn"
-                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap">
+            class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-medium whitespace-nowrap shadow-sm">
             Apply Filter
         </button>
+
         <button id="resetBtn"
-                class="bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap">
+            class="bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 px-5 py-2 rounded-lg text-sm font-medium whitespace-nowrap">
             Reset
         </button>
 

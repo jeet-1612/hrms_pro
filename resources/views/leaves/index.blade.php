@@ -113,10 +113,12 @@
     <!-- Filters -->
     <div class="bg-white border border-gray-200 rounded-xl p-4 mb-6 shadow-sm">
         <div class="flex flex-wrap items-end gap-4">
-            <!-- Status Filter -->
-            <div class="flex-1 min-w-[150px]">
+
+            <!-- Status -->
+            <div class="flex-1 min-w-[160px]">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                <select id="filterStatus" class="w-full border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 text-sm py-2">
+                <select id="filterStatus"
+                    class="w-full border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 text-sm py-2">
                     <option value="">All Status</option>
                     <option value="pending">Pending</option>
                     <option value="approved">Approved</option>
@@ -124,35 +126,43 @@
                     <option value="cancelled">Cancelled</option>
                 </select>
             </div>
-            
-            <!-- Leave Type Filter -->
-            <div class="flex-1 min-w-[150px]">
+
+            <!-- Leave Type -->
+            <div class="flex-1 min-w-[160px]">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Leave Type</label>
-                <select id="filterLeaveType" class="w-full border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 text-sm py-2">
+                <select id="filterLeaveType"
+                    class="w-full border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 text-sm py-2">
                     <option value="">All Types</option>
-                    <!-- Options will be populated here -->
                 </select>
             </div>
-            
-            <!-- Date Range Filter -->
-            <div class="flex-1 min-w-[180px]">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Date Range</label>
-                <div class="flex space-x-2">
-                    <input type="date" id="filterStartDate" class="flex-1 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 text-sm py-2">
-                    <span class="text-gray-400 self-center">to</span>
-                    <input type="date" id="filterEndDate" class="flex-1 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 text-sm py-2">
-                </div>
+
+            <!-- Start Date -->
+            <div class="flex-1 min-w-[160px]">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+                <input type="date" id="filterStartDate"
+                    class="w-full border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 text-sm py-2">
             </div>
-            
-            <!-- Action Buttons -->
-            <div class="flex space-x-2">
-                <button id="filterBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap">
-                    Apply Filters
+
+            <!-- End Date -->
+            <div class="flex-1 min-w-[160px]">
+                <label class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
+                <input type="date" id="filterEndDate"
+                    class="w-full border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500 text-sm py-2">
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex gap-3">
+                <button id="filterBtn"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap">
+                    Apply
                 </button>
-                <button id="resetBtn" class="bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap">
+
+                <button id="resetBtn"
+                    class="bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap">
                     Reset
                 </button>
             </div>
+
         </div>
     </div>
 
